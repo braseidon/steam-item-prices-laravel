@@ -14,6 +14,8 @@ Braseidon\SteamItemPrices is a wrapper around the JSON Steam API that grabs a us
 - Uses the fast [Steam API](http://steamcommunity.com/dev/) to fetch data
 - Requires a [Steam API Key](http://steamcommunity.com/dev/apikey)
 - Utilizes Laravel's Caching system
+- Made specifically for use with [Laravel 5](https://github.com/laravel/laravel)
+- Coded to the [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/) PHP coding standards
 
 # Installation
 
