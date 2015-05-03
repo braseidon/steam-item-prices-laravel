@@ -1,0 +1,20 @@
+{
+    "name": "braseidon/steam-item-prices-laravel",
+    "description": "",
+    "authors": [
+        {
+            "name": "braseidon",
+            "email": "bluejd910@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.0.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Braseidon\\SteamItemPricesLaravel": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
