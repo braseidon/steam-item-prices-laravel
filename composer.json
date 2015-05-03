@@ -1,6 +1,6 @@
 {
     "name": "braseidon/steam-item-prices-laravel",
-    "description": "",
+    "description": "This package uses the Steam API (requires dev key) to check prices for game items, like in Counter-Strike: Global Offensive. This is a Laravel 5 based package.",
     "authors": [
         {
             "name": "braseidon",
@@ -12,8 +12,8 @@
         "illuminate/support": "5.0.*"
     },
     "autoload": {
-        "psr-0": {
-            "Braseidon\\SteamItemPricesLaravel": "src/"
+        "psr-4": {
+            "Braseidon\\SteamItemPrices\\": "src/"
         }
     },
     "minimum-stability": "stable"
