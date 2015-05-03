@@ -1,5 +1,7 @@
 <?php namespace Braseidon\SteamItemPrices;
 
+use Illuminate\Cache\CacheManager;
+
 class ItemPrices
 {
 
@@ -10,6 +12,27 @@ class ItemPrices
      */
     protected $apiKey;
 
+    /**
+     * @var CacheManager $cache Caching layer
+     */
+    protected $cache;
+
+    /**
+     * @param string $cache Instantiate the Object
+     */
+    public function __construct(CacheManager $cache)
+    {
+        $this->cache = $cache;
+        $this->collection = new Collection();
+    }
+
+    /**
+     * Return the price of an item using Steam's API
+     *
+     * @param  integer $appId
+     * @param  integer $itemId
+     * @return stdClass
+     */
     public function getPrice($appId, $itemId)
     {
         $json = file_get_contents($this->jsonUrl($appId, $itemId));

@@ -1,4 +1,4 @@
-# Braseidon\SteamItemPrices (For Laravel 5)
+# Braseidon Steam Item Prices
 
 [![Author](http://img.shields.io/badge/author-@BraSeidon-blue.svg?style=flat-square)](https://twitter.com/BraSeidon)
 [![Source Code](http://img.shields.io/badge/source-braseidon/steam--item--prices--laravel-blue.svg?style=flat-square)](https://github.com/braseidon/steam-item-prices-laravel)
@@ -7,7 +7,7 @@
 [![Build Status](https://img.shields.io/travis/braseidon/steam-item-prices-laravel/master.svg?style=flat-square)](https://travis-ci.org/braseidon/steam-item-prices-laravel)
 [![Total Downloads](https://img.shields.io/packagist/dt/braseidon/steam-item-prices-laravel.svg?style=flat-square)](https://packagist.org/packages/braseidon/steam-item-prices-laravel)
 
-SteamItemPrices is a wrapper around the JSON Steam API that grabs a user's items - all packaged up for Laravel.
+Braseidon\SteamItemPrices is a wrapper around the JSON Steam API that grabs a user's items - all packaged up for Laravel 5.
 
 ## Highlights
 
