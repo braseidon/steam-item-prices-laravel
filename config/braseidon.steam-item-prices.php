@@ -11,7 +11,7 @@ return [
     | Get it at: http://steamcommunity.com/dev/apikey
     |
     */
-    'api_key'    => '',
+    'api_key' => env('STEAM_API_KEY', ''),
 
    /*
     |--------------------------------------------------------------------------
@@ -23,6 +23,6 @@ return [
     | smoother experience for your visitors.
     |
     */
-    'cache_time'    => 120,
+    'cache_time' => env('STEAM_API_CACHE', 120),
 
 ];

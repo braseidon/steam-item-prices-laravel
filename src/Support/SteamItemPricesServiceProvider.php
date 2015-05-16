@@ -19,15 +19,15 @@ class SteamItemPricesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $configPath = __DIR__ . '/../../config/braseidon.steamitemprices.php';
-        $this->mergeConfigFrom($configPath, 'braseidon.steamitemprices');
-        $this->publishes([$configPath => config_path('braseidon.steamitemprices.php')], 'config');
+        $configPath = __DIR__ . '/../../config/braseidon.steam-item-prices.php';
+        $this->mergeConfigFrom($configPath, 'braseidon.steam-item-prices');
+        $this->publishes([$configPath => config_path('braseidon.steam-item-prices.php')], 'config');
 
-        $this->app->bindShared('braseidon.steamitemprices', function ($app) {
+        $this->app->bindShared('braseidon.steam-item-prices', function ($app) {
             return new ItemPrices($app->make('Illuminate\Cache\CacheManager'));
         });
 
-        $this->app->alias('braseidon.steamitemprices', 'Braseidon\SteamItemPrices\ItemPrices');
+        $this->app->alias('braseidon.steam-item-prices', 'Braseidon\SteamItemPrices\ItemPrices');
     }
 
     /**
@@ -37,6 +37,6 @@ class SteamItemPricesServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['braseidon.steamitemprices'];
+        return ['braseidon.steam-item-prices'];
     }
 }

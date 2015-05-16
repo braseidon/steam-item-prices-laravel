@@ -35,7 +35,8 @@ class ItemPrices
      */
     public function getPrice($appId, $itemId)
     {
-        $json = file_get_contents($this->jsonUrl($appId, $itemId));
+        $url = $this->jsonUrl($appId, $itemId);
+        $json = @file_get_contents($url);
 
         return json_decode(json_encode($json));
     }
@@ -49,7 +50,7 @@ class ItemPrices
      */
     protected function jsonUrl($appId, $itemId)
     {
-        $url = 'http://api.steampowered.com/ISteamEconomy/GetAssetClassInfo/v0001?';
+        $url = 'http://api.steampowered.com/ISteamEconomy/GetAssetClassInfo/v0001/';
 
         $data = [
             'key'         => $this->apiKey,
@@ -60,6 +61,6 @@ class ItemPrices
             'classid0'    => $itemId,
         ];
 
-        return $url . http_build_url($data);
+        return $url . '?' . http_build_url($data);
     }
 }

@@ -12,6 +12,6 @@ class SteamItemPrices extends Facade
     */
     protected static function getFacadeAccessor()
     {
-        return 'braseidon.steamitemprices';
+        return 'braseidon.steam-item-prices';
     }
 }
