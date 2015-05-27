@@ -1,5 +1,6 @@
 <?php namespace Braseidon\SteamItemPrices;
 
+use Config;
 use Illuminate\Cache\CacheManager;
 
 class ItemPrices
@@ -18,12 +19,18 @@ class ItemPrices
     protected $cache;
 
     /**
+     * @var array $currencyHtmlTags
+     */
+    protected $currencyHtmlTags = ['&#36;'];
+
+    /**
      * @param string $cache Instantiate the Object
      */
     public function __construct(CacheManager $cache)
     {
         $this->cache = $cache;
-        $this->collection = new Collection();
+
+        $this->apiKey = Config::get('braseidon.steam-item-prices.api_key');
     }
 
     /**
@@ -35,10 +42,14 @@ class ItemPrices
      */
     public function getPrice($appId, $itemId)
     {
-        $url = $this->jsonUrl($appId, $itemId);
+        // Item info:
+        // $url = $this->getItemInfoUrl($appId, $itemId);
+        // Item price:
+        $url = $this->getItemPriceUrl($itemId);
         $json = @file_get_contents($url);
+        $json = str_replace($this->currencyHtmlTags, '', $json);
 
-        return json_decode(json_encode($json));
+        return json_decode($json);
     }
 
     /**
@@ -48,9 +59,9 @@ class ItemPrices
      * @param  integer $itemId
      * @return string
      */
-    protected function jsonUrl($appId, $itemId)
+    protected function getItemInfoUrl($appId, $itemId)
     {
-        $url = 'http://api.steampowered.com/ISteamEconomy/GetAssetClassInfo/v0001/';
+        $url = 'https://api.steampowered.com/ISteamEconomy/GetAssetClassInfo/v0001/?';
 
         $data = [
             'key'         => $this->apiKey,
@@ -61,6 +72,25 @@ class ItemPrices
             'classid0'    => $itemId,
         ];
 
-        return $url . '?' . http_build_url($data);
+        return $url . http_build_query($data);
+    }
+
+    /**
+     * Get the public JSON price for items
+     *
+     * @param  string $itemName
+     * @return stdClass
+     */
+    protected function getItemPriceUrl($hashName = '', $appId = 730)
+    {
+        $url = 'https://steamcommunity.com/market/priceoverview/?';
+
+        $data = [
+            'appid'            => $appId,
+            'currency'         => 1,
+            'market_hash_name' => $hashName,
+        ];
+
+        return $url . http_build_query($data);
     }
 }
